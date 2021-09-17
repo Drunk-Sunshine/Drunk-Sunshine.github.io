@@ -57,6 +57,8 @@
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
+				<li><a href="/categories/%20%7C%7C%20th">categories</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +134,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/categories/%20%7C%7C%20th">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -151,156 +157,6 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    <article id="post-Git配置和使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><p>Git下载安装：下载网址<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/git-for-windows/">git-for-windows Mirror (taobao.org)</a></p>
-<p>（官网下载过慢，此处使用镜像网站下载）</p>
-<p>版本v2.33.0.windows.2</p>
-<p>安装：无脑下一步安装即可</p>
-<h2 id="分布式版本控制"><a href="#分布式版本控制" class="headerlink" title="分布式版本控制"></a>分布式版本控制</h2><p>每个人都拥有全部的代码！（具有一定的安全隐患）所有版本信息仓库全部同步到本地每个用户，这样就可以在本地查看所有版本历史，可以离线在本地提交，只需在连网时push到相应的服务器或其他用户那里。由于每个用户那里保存的都是所有的版本数据，只要由一个用户的设备没有问题就可以恢复所有的数据，但这增加了本地存储空间的占用。</p>
-<p>不会因为服务器损坏或网络问题，造成不能工作的情况。</p>
-<p>Git协同的方法：比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两个之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。Git可以直接看到更新了哪些代码和文件！</p>
-<h2 id="基本Linux命令"><a href="#基本Linux命令" class="headerlink" title="基本Linux命令"></a>基本Linux命令</h2><p>1）、cd：改变目录</p>
-<p>2）、cd .. 回退到上一个目录，直接cd进入默认目录</p>
-<p>3）、pwd：显示当前所在的目录路径</p>
-<p>4）、ls(ll)：都是列出当前目录中的所有文件，只不过ll（两个ll）列出的内容更加详细</p>
-<p>5）、touch：新建一个文件 如touch index.js 就会在当前目录下新建一个index.js文件</p>
-<p>6）、rm：删除一个文件，rm index.js 就会把index.js文件删除</p>
-<p>7）、mkdir：新建一个目录，就是新建一个文件夹。</p>
-<p>8）、rm -r：删除一个文件夹，rm -r src 删除src目录</p>
-<p>9）、mv 移动文件，mv index.html src index.html 是我们要移动的文件，src是目标文件夹，当然，这样写，必须保证文件和目标文件夹在同一目录下。</p>
-<p>10）、reset 重新初始化终端/清屏</p>
-<p>11）、 clear 清屏</p>
-<p>12）、history 查看命令历史</p>
-<p>13）、help 帮助</p>
-<p>14）、exit 退出</p>
-<p>15）、 # 表示注释。</p>
-<h2 id="Git环境配置"><a href="#Git环境配置" class="headerlink" title="Git环境配置"></a>Git环境配置</h2><p>文件夹中空白处右键选中Git Bash Here</p>
-<blockquote>
-<p>设置同户名与邮箱（用户标识，必要）</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;名称&quot;  # 名称</span><br><span class="line">git config --global user.email &quot;xxxx@xx.com&quot; # 邮箱</span><br></pre></td></tr></table></figure>
-
-<h2 id="Git基本理论"><a href="#Git基本理论" class="headerlink" title="Git基本理论"></a>Git基本理论</h2><p>Git本地有四个工作区域：工作目录、暂存区、资源库和远程Git仓库，文件在四个区域之间的转换关系如下：</p>
-<p><img src="https://gitee.com/uestc-eagles/pic-md1/raw/master/20210908140033.png"></p>
-<p>workspace：工作区，平时存放项目代码的地方</p>
-<p>Index/Stage：暂存区，用于临时存放你的改动，事实上它只是一个文件，保存即将提交到文件列表信息</p>
-<p>Repository：仓库去（或本地仓库），安全存放数据的位置，这里面有你提交到所有版本的数据。其中HEAD指向最新放入仓库的版本</p>
-<p>Remote：远程仓库，托管代码的服务器，可以简单的认为是你项目组中的一台电脑用于远程数据交换</p>
-<p><img src="https://gitee.com/uestc-eagles/pic-md1/raw/master/20210908140026.png" alt="image-20210902161053686"></p>
-<h3 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h3><p>1、在工作目录中添加、修改文件；</p>
-<p>2、将需要进行版本管理的我呢缉拿放入暂存区域； （git add . )</p>
-<p>3、将暂存区域的文件提交到git仓库。   (git committed)</p>
-<p>git管理的文件有三种状态：已修改（modified），已暂存（staged），已提交（committed）</p>
-<h2 id="Git项目搭建"><a href="#Git项目搭建" class="headerlink" title="Git项目搭建"></a>Git项目搭建</h2><blockquote>
-<p>创建工作目录与常用指令</p>
-</blockquote>
-<p>工作目录（workSpace）一般就是你希望Git帮助你管理的我呢见加，可以是你项目的目录，也可以是一个空目录，建议不要有中文。日常使用只需要记下6个命令：</p>
-<p><img src="https://gitee.com/uestc-eagles/pic-md1/raw/master/20210908140037.png" alt="image-20210902161708150"></p>
-<blockquote>
-<p><strong>本地仓库搭建</strong></p>
-</blockquote>
-<p>创建本地仓库的方法有两种：一种是创建全新的仓库，另一种是克隆远程仓库。</p>
-<p>1、创建全新的仓库，需要用Git管理的项目的根目录执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 在当前目录新建一个Git代码库</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
-
-<p>2、执行后可以看到，仅仅在项目目录多出了一个.git目录，关于版本等的所有信息都在这个目录里面。</p>
-<blockquote>
-<p><strong>克隆远程仓库</strong></p>
-</blockquote>
-<p>1、另一种方式是克隆远程目录，由于是将远程服务器上的仓库完全镜像一份至本地！</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 克隆一个项目和它的整个代码历史（版本信息）</span><br><span class="line">$ git clone [url]</span><br></pre></td></tr></table></figure>
-
-<p>2、去gitee或者GitHub上克隆一个测试！</p>
-<h2 id="Git文件操作"><a href="#Git文件操作" class="headerlink" title="Git文件操作"></a>Git文件操作</h2><blockquote>
-<p>文件的4种状态</p>
-</blockquote>
-<p>版本控制就是对文件的版本控制，要对文件进行修改、提交等操作，首先要知道文件当前在什么状态，不然可能会提交了现在还不想提交的文件，或者要提交的文件没提交上。</p>
-<ul>
-<li><strong>Untracked</strong>：未跟踪，此文件在文件夹中，但并没有加入到git库，不参与版本控制。通过<strong>git add</strong> 状态变为<strong>Staged</strong></li>
-<li><strong>Unmodify</strong>：文件已经入库，未修改。即版本库中的文件快照内容与文件夹中完全一致，这种类型的文件有两种去处，如果它被修改，而变为<strong>Modified</strong> 如果使用<strong>git rm</strong> 移出版本库，则成为 <strong>Untracked</strong>文件</li>
-<li><strong>Modified</strong>：文件已经修改，并没有进行其他的操作。这个文件也有两个去处，通过<strong>git add</strong>可进入暂存<strong>Staged</strong>状态，使用<strong>git checkout</strong> 则丢弃修改过，返回到<strong>unmodify</strong>状态，这个<strong>git checkout</strong>即从库中取出文件，覆盖当前修改。</li>
-<li><strong>Staged</strong>：暂存状态。执行<strong>git commit</strong>则将修改同步到库中（本地仓库），这时库中的文件和本地文件又变为一致，文件为<strong>Unmodify</strong>状态。执行<strong>git reset HEAD filename</strong>取消暂存，文件状态为<strong>Modified</strong>。</li>
-</ul>
-<blockquote>
-<p>查看文件状态</p>
-</blockquote>
-<p>上面说文件有4中状态，通过如下命令可以查看到文件的状态：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看指定文件状态</span><br><span class="line">git status [filename]</span><br><span class="line"></span><br><span class="line"># 查看所有文件状态</span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"># git add .       添加所有文件到暂存区</span><br><span class="line"># git commit -m &quot;消息内容&quot;  提交暂存区中的内容到本地仓库 -m 提交信息</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>忽略文件</p>
-</blockquote>
-<p><img src="C:\Users\十七\AppData\Roaming\Typora\typora-user-images\image-20210902203823979.png" alt="image-20210902203823979"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 为注释</span><br><span class="line">*.txt			# 忽略所有 .txt 结尾的文件，这样的话上传就不会被选中！</span><br><span class="line">！lib.txt		# 但lib.txt 除外</span><br><span class="line">/temp			# 仅忽略项目根目录下的TODO文件，不包括其它目录temp</span><br><span class="line">build/			# 忽略build/目录下的所有文件</span><br><span class="line">doc/*.txt		# 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h2><p>git分支中的常用命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 列出所有本地分支</span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line"># 列出所有远程分支</span><br><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line"># 新建一个分支，但依然停留在当前分支</span><br><span class="line">git checkout -b [branch]</span><br><span class="line"></span><br><span class="line"># 合并指定分支到当前分支</span><br><span class="line">$ git merge [branch]</span><br><span class="line"></span><br><span class="line"># 删除分支</span><br><span class="line">$ git branch -d [branch-name]</span><br><span class="line"></span><br><span class="line"># 删除远程分支</span><br><span class="line">$ git push origin --delete [branch-name]</span><br><span class="line">$ git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
-
-<p>多个分支如果并行执行，就会导致我们代码不冲突，也就是存在多个版本！</p>
-<p>如果同一个文件在合并分支时都被修改了则会引起冲突：解决的方法是我们可以修改冲突文件后重新提交！选择要保留他的代码还是你的代码，冲突了进行协商即可</p>
-<p>master主分支应该非常稳定，用来发布新版本，一般情况下不允许在上面工作，工作一般情况下在新建的dev分支上工作。   </p>
-<h2 id="Git教程资料"><a href="#Git教程资料" class="headerlink" title="Git教程资料"></a>Git教程资料</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/all-about-git">Git 大全 - Gitee.com</a></p>
-<p><a target="_blank" rel="noopener" href="https://oschina.gitee.io/learn-git-branching/">Learn Git Branching (gitee.io)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-branch.html">Git 分支管理 | 菜鸟教程 (runoob.com)</a></p>
-<p>多多练习使用</p>
-<h1 id="码云gitee使用教程"><a href="#码云gitee使用教程" class="headerlink" title="码云gitee使用教程"></a>码云gitee使用教程</h1><p>1、注册登录码云，完善个人信息</p>
-<p>2、设置本机绑定SSH公钥，实现免密码登录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 进入 C:\Users\Administrator\.ssh 目录</span><br><span class="line"># 生成公钥</span><br><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gitee.com/uestc-eagles/pic-md1/raw/master/20210908140050.png" alt="image-20210903142851748"></p>
-<p><img src="https://gitee.com/uestc-eagles/pic-md1/raw/master/20210908140054.png" alt="image-20210903142932099"></p>
-<p>3、将公钥信息public key添加到码云账户中即可</p>
-<p>4、使用码云创建一个自己的仓库</p>
-<p>许可证：开源是否可以随意转载，开源但是不能商业使用，不能转载</p>
-<p>5、克隆到本地 git clone 地址</p>
-<p>码云gitee学习资料：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/p445098355/article/details/104766195?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.essearch_pc_relevant&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.essearch_pc_relevant">(10条消息) gitee码云完整使用教程（部署与克隆）_柯晓楠-CSDN博客_gitee教程</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/17/Git%E9%85%8D%E7%BD%AE%E5%92%8C%E4%BD%BF%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
